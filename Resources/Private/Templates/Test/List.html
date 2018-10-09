@@ -1,0 +1,26 @@
+<f:be.container>
+
+    <ul>
+        <f:for each="{objects}" as="object">
+            <li>
+                {object.title}
+                <f:for each="{object.categories}" as="category" iteration="iter">
+                    <f:if condition="{iter.isFirst}">
+                        &nbsp;-&nbsp;
+                    </f:if>
+
+                    {category.title}
+
+                    <f:if condition="!{iter.isLast}">
+                        ,&nbsp;
+                    </f:if>
+                </f:for>
+            </li>
+        </f:for>
+    </ul>
+
+    <f:if condition="{objects -> f:count()} == 0">
+        <h1>Please select a sysfolder with "Object Item" entries.</h1>
+    </f:if>
+
+</f:be.container>
